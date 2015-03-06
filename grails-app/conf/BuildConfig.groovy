@@ -41,7 +41,7 @@ grails.project.dependency.resolution = {
     }
 
     plugins {
-        compile ":spring-security-oauth2-provider:2.0-RC2"
+        compile ":spring-security-oauth2-provider:2.0-SNAPSHOT"
         compile ":console:1.5.4"
 
         // plugins for the build system only
