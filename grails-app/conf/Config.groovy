@@ -96,24 +96,34 @@ environments {
 }
 
 // log4j configuration
-log4j.main = {
-    // Example of changing the log pattern for the default console appender:
-    //
-    //appenders {
-    //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
-    //}
+log4j = {
+    appenders {
+        console name: 'consoleAppender', layout: pattern(conversionPattern: '%d{dd-MM-yyyy HH:mm:ss,SSS} %5p %c{2} - %m%n')
+    }
 
-    error 'org.codehaus.groovy.grails.web.servlet',        // controllers
-            'org.codehaus.groovy.grails.web.pages',          // GSP
-            'org.codehaus.groovy.grails.web.sitemesh',       // layouts
-            'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
-            'org.codehaus.groovy.grails.web.mapping',        // URL mapping
-            'org.codehaus.groovy.grails.commons',            // core / classloading
-            'org.codehaus.groovy.grails.plugins',            // plugins
-            'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
-            'org.springframework',
-            'org.hibernate',
-            'net.sf.ehcache.hibernate'
+    root {
+        // define the root logger's level and appenders, these will be inherited by all other loggers
+        error 'consoleAppender'
+    }
+
+    // change the default log level for classes in our app to DEBUG
+    def packageRoot = 'org.example'
+
+    def kerpNamespaces = [
+            packageRoot,
+            "grails.app.conf.$packageRoot",
+            "grails.app.filters.$packageRoot",
+            "grails.app.taglib.$packageRoot",
+            "grails.app.services.$packageRoot",
+            "grails.app.controllers.$packageRoot",
+            "grails.app.domain.$packageRoot"
+    ]
+
+    // statements from the app should be logged at DEBUG level
+    kerpNamespaces.each { debug it }
+
+    // suppress these harmless errors http://stackoverflow.com/questions/23858953/grails-2-4-and-hibernate4-errors-with-run-app
+    fatal 'org.hibernate.tool.hbm2ddl.SchemaExport'
 }
 
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
