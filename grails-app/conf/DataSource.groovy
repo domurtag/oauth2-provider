@@ -21,11 +21,7 @@ environments {
     development {
         dataSource {
             dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
-            driverClassName = "com.mysql.jdbc.Driver"
-            dialect = MySQL5InnoDBDialect
-            url = "jdbc:mysql://localhost/oauth_provider"
-            username = 'root'
-            password = ''
+            url = "jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
         }
     }
     test {
