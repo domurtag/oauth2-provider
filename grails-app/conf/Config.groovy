@@ -167,3 +167,5 @@ grails.plugin.springsecurity.filterChain.chainMap = [
         '/securedOAuth2Resources/**': 'JOINED_FILTERS,-securityContextPersistenceFilter,-logoutFilter,-rememberMeAuthenticationFilter,-exceptionTranslationFilter',
         '/**': 'JOINED_FILTERS,-statelessSecurityContextPersistenceFilter,-oauth2ProviderFilter,-clientCredentialsTokenEndpointFilter,-oauth2ExceptionTranslationFilter'
 ]
+
+grails.plugin.springsecurity.oauthProvider.tokenServices.tokenEnhancerBeanNames = ['usernameTokenEnhancer']
