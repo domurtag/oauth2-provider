@@ -19,7 +19,8 @@ class BootStrap {
                 authorizedGrantTypes: ['authorization_code', 'refresh_token', 'implicit', 'password', 'client_credentials'],
                 authorities: ['ROLE_CLIENT'],
                 scopes: ['read', 'write'],
-                redirectUris: ['http://localhost:9090/oauth-client/auth/callback']
+                redirectUris: ['http://localhost:9090/oauth-client/auth/callback'],
+                clientSecret: 'secret'
         ).save(saveArgs)
 
         // create an admin user
