@@ -18,7 +18,7 @@ class BootStrap {
                 clientId: 'my-client',
                 authorizedGrantTypes: ['authorization_code', 'refresh_token', 'implicit', 'password', 'client_credentials'],
                 authorities: ['ROLE_CLIENT'],
-                scopes: ['read', 'write'],
+                scopes: ['all'],
                 redirectUris: ['http://localhost:9090/oauth-client/auth/callback'],
                 clientSecret: 'secret'
         ).save(saveArgs)
